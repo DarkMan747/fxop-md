@@ -1,12 +1,12 @@
-const path = require('path');
-const config = require('./config');
-const { requireJS, retrivePlugins, client } = require('./lib');
+const path = require("path");
+const config = require("./config");
+const { requireJS, retrivePlugins, client } = require("./lib");
 async function initialize() {
- await requireJS(path.join(__dirname, '/lib/Client/Stores/'));
- console.log('Syncing Database');
+ await requireJS(path.join(__dirname, "/lib/Client/Stores/"));
+ console.log("Syncing Database");
  await config.DATABASE.sync();
- console.log('⬇  Installing Plugins...');
- await requireJS(path.join(__dirname, '/plugins/'));
+ console.log("⬇  Installing Plugins...");
+ await requireJS(path.join(__dirname, "/plugins/"));
  await retrivePlugins();
  return await client();
 }
