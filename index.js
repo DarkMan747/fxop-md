@@ -2,7 +2,7 @@ const path = require('path');
 const config = require('./config');
 const { requireJS, retrivePlugins, client } = require('./lib');
 async function initialize() {
- await requireJS(path.join(__dirname, '/lib/Client/database/'));
+ await requireJS(path.join(__dirname, '/lib/Client/Stores/'));
  console.log('Syncing Database');
  await config.DATABASE.sync();
  console.log('⬇  Installing Plugins...');

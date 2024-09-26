@@ -243,7 +243,7 @@ Description: ${plugin.description || "No description available"}\`\`\``);
     return await message.send(media, { caption: tiny(menuText.trim()) });
    } catch (error) {
     try {
-     const defaultImg = await localBuffer(path.join(__dirname, "../lib/Client/media/images/thumb.jpg"));
+     const defaultImg = await localBuffer(path.join(__dirname, "../lib/Client/Streams/images/thumb.jpg"));
      return await message.send(defaultImg, { caption: tiny(menuText.trim()) });
     } catch (error) {
      return await message.send(tiny(menuText.trim()));

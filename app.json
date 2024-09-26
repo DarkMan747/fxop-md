@@ -15,7 +15,7 @@
   "BOT_INFO": {
    "description": "BOT INFO",
    "required": true,
-   "value": "ᴀsᴛʀᴏ;ғxᴏᴘ-ᴍᴅ;https://raw.githubusercontent.com/FXastro/fxop-md/master/media/images/thumb.jpg"
+   "value": "ᴀsᴛʀᴏ;ғxᴏᴘ-ᴍᴅ;https://raw.githubusercontent.com/FXastro/fxop-md/master/Streams/images/thumb.jpg"
   },
   "SUDO": {
    "description": "SUDO NUMBERS (comma-separated)",
