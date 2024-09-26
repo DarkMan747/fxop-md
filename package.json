@@ -11,7 +11,6 @@
   "stop": "pm2 stop fx-md"
  },
  "author": "FXastro",
- "license": "MIT",
  "dependencies": {
   "axios": "^1.4.0",
   "baileys": "github:FXastro/Baileys",
@@ -19,6 +18,7 @@
   "cheerio": "^1.0.0-rc.12",
   "crypto": "^1.0.1",
   "dotenv": "^16.4.5",
+  "express": "*",
   "file-type": "^16.5.3",
   "fluent-ffmpeg": "^2.1.2",
   "form-data": "^4.0.0",
@@ -30,6 +30,7 @@
   "node-webpmux": "^3.1.7",
   "pastebin-js": "^1.0.6",
   "path": "^0.12.7",
+  "play-dl": "*",
   "pdfkit": "^0.15.0",
   "pg": "^8.11.5",
   "pino": "^8.14.1",
