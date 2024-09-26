@@ -2,7 +2,7 @@ const { Sequelize } = require('sequelize');
 require('dotenv').config();
 
 const toBool = x => x?.toLowerCase() === 'true';
-const DATABASE_URL = process.env.DATABASE_URL?.trim() || './db.sqlite3';
+const DATABASE_URL = process.env.DATABASE_URL?.trim() || './bot.db';
 const isPostgres = DATABASE_URL.startsWith('postgresql://');
 
 const sequelizeOptions = {
