@@ -26,8 +26,9 @@ A simple WhatsApp bot built with Baileys, deployable on multiple platforms.
 2. Create `.env` file with required variables.
 
 ```bash
-SESSION_ID = "Session~sisne
-BOT_INFO = "myName;BotName;https://linktoImage/Video.jpg/media.mp4
+SESSION_ID = "Session~sisne"
+BOT_INFO = "myName;BotName;https://linktoImage/Video.jpg/media.mp4"
+SUDO = "9123456789,92345678912"
 ```
 
 3. Launch the bot using Node.js, Docker, etc.
