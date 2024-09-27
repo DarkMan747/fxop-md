@@ -3,11 +3,13 @@ const { requireJS, retrivePlugins, client } = require("./lib");
 const config = require("./config");
 const app = express();
 
-app.get("/", (req, res) => res.json({ version: require("./package.json").version }));
+app.get("/", (req, res) => res.json({ version: `${require("./package.json").version}` }));
 
 app.listen(8000, async () => {
- await new Promise(r => setTimeout(r, 2500));
+ await new Promise(res => setTimeout(res, 2500));
  await config.DATABASE.sync();
- (await requireJS("./lib/Client/Stores/")) && requireJS("./plugins") && retrivePlugins();
+ await requireJS("./lib/Client/Stores/");
+ await requireJS("./plugins/");
+ await retrivePlugins();
  await client();
 });
