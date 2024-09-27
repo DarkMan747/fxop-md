@@ -1,13 +1,15 @@
-const express = require("express");
-const { requireJS, retrivePlugins, client } = require("./lib");
+const path = require("path");
 const config = require("./config");
-const app = express();
-
-app.get("/", (req, res) => res.json({ message: `${require("./package.json").version}` }));
-app.listen(8000, async () => {
+const { requireJS, retrivePlugins, client, sleep } = require("./lib");
+async function initialize() {
+ await requireJS(path.join(__dirname, "/lib/Client/Stores/"));
+ console.log("Syncing Database");
+ await sleep(3000);
  await config.DATABASE.sync();
- await requireJS("./lib/Client/Stores/");
- await requireJS("./plugins/");
+ console.log("⬇ Modules Installed");
+ await requireJS(path.join(__dirname, "/plugins/"));
  await retrivePlugins();
  return await client();
-});
+}
+
+initialize();
