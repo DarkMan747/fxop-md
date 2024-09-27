@@ -1,108 +1,100 @@
-const config = require('../config');
-const { Module, mode, toAudio, webp2mp4, fancy } = require('../lib');
+const config = require("../config");
+const { Module, mode, toAudio, webp2mp4, textToImg } = require("../lib");
+Module(
+ {
+  pattern: "sticker",
+  fromMe: mode,
+  desc: "Converts Photo/video/text to sticker",
+  type: "converter",
+ },
+ async (message, match, m) => {
+  if (!message.reply_message && (!message.reply_message.video || !message.reply_message.sticker || !message.reply_message.text)) return await message.reply("_Reply to photo/video/text_");
+  var buff;
+  if (message.reply_message.text) {
+   buff = await textToImg(message.reply_message.text);
+  } else {
+   buff = await m.quoted.download();
+  }
+
+  message.sendMessage(message.jid, buff, { packname: config.PACKNAME, author: config.AUTHOR }, "sticker");
+ }
+);
 
 Module(
  {
-  pattern: 'sticker',
+  pattern: "take",
   fromMe: mode,
-  desc: 'Converts Photo/video/text to sticker',
-  type: 'converter'
+  desc: "Converts Photo or video to sticker",
+  type: "converter",
  },
  async (message, match, m) => {
-  if (!message.reply_message) return await message.reply('_Reply Photo/Video_');
+  if (!message.reply_message.sticker) return await message.reply("_Reply to a sticker_");
+  const packname = match.split(";")[0] || config.PACKNAME;
+  const author = match.split(";")[1] || config.AUTHOR;
   let buff = await m.quoted.download();
-  const [packname, author] = config.STICKER_PACK.split(';');
-  message.sendMessage(message.chat, buff, { packname, author }, 'sticker');
+  message.sendMessage(message.jid, buff, { packname, author }, "sticker");
  }
 );
 
 Module(
  {
-  pattern: 'take',
+  pattern: "photo",
   fromMe: mode,
-  desc: 'Converts Photo or video to sticker',
-  type: 'converter'
+  desc: "Changes sticker to Photo",
+  type: "converter",
  },
  async (message, match, m) => {
-  if (!message.reply_message.sticker) return await message.reply('_Reply to a sticker_');
-
-  const [packname, author] = config.STICKER_PACK.split(';');
+  if (!message.reply_message.sticker) return await message.reply("_Not a sticker_");
   let buff = await m.quoted.download();
-  message.sendMessage(message.chat, buff, { packname, author }, 'sticker');
+  return await message.sendMessage(message.jid, buff, {}, "image");
  }
 );
 
 Module(
  {
-  pattern: 'photo',
+  pattern: "mp3",
   fromMe: mode,
-  desc: 'Changes sticker to Photo',
-  type: 'converter'
- },
- async (message, match, m) => {
-  if (!message.reply_message.sticker) return await message.reply('_Not a sticker_');
-
-  let buff = await m.quoted.download();
-  return await message.send(buff);
- }
-);
-
-Module(
- {
-  pattern: 'mp3',
-  fromMe: mode,
-  desc: 'Converts video/voice to mp3',
-  type: 'converter'
+  desc: "converts video/voice to mp3",
+  type: "converter",
  },
  async (message, match, m) => {
   let buff = await m.quoted.download();
-  buff = await toAudio(buff, 'mp3');
-  return await message.send(buff);
+  console.log(typeof buff);
+  buff = await toAudio(buff, "mp3");
+  console.log(typeof buff);
+  return await message.sendMessage(message.jid, buff, { mimetype: "audio/mpeg" }, "audio");
  }
 );
 
 Module(
  {
-  pattern: 'mp4',
+  pattern: "mp4",
   fromMe: mode,
-  desc: 'Converts video/voice to mp4',
-  type: 'converter'
+  desc: "converts video/voice to mp4",
+  type: "converter",
  },
  async (message, match, m) => {
-  if (!message.reply_message.video && !message.reply_message.sticker && !message.reply_message.audio) return await message.reply('_Reply to a sticker/audio/video_');
-
+  if (!message.reply_message.video || !message.reply_message.sticker || !message.reply_message.audio) return await message.reply("_Reply to a sticker/audio/video_");
   let buff = await m.quoted.download();
-  buff = message.reply_message.sticker ? await webp2mp4(buff) : await toAudio(buff, 'mp4');
-  return await message.send(buff);
+  if (message.reply_message.sticker) {
+   buff = await webp2mp4(buff);
+  } else {
+   buff = await toAudio(buff, "mp4");
+  }
+  return await message.sendMessage(message.jid, buff, { mimetype: "video/mp4" }, "video");
  }
 );
 
 Module(
  {
-  pattern: 'img',
+  pattern: "img",
   fromMe: mode,
-  desc: 'Converts Sticker to image',
-  type: 'converter'
+  desc: "Converts Sticker to image",
+  type: "converter",
  },
  async (message, match, m) => {
-  if (!message.reply_message.sticker) return await message.reply('_Reply to a sticker_');
-
-  const buff = await m.quoted.download();
-  return await message.send(buff);
- }
-);
-
-Module(
- {
-  pattern: 'fancy',
-  fromMe: mode,
-  desc: 'Converts Normal text to Fancy Rubbish',
-  type: 'converter'
- },
- async (message, match) => {
-  if (!match) return await message.sendReply('```Wrong format!\n\n' + message.prefix + 'fancy Astro```');
-
-  const fancy_text = await fancy(match);
-  return await message.send(fancy_text);
+  if (!message.reply_message.sticker) return await message.reply("_Reply to a sticker_");
+  let buff = await m.quoted.download();
+  return await message.sendMessage(message.jid, buff, {}, "image");
  }
 );
