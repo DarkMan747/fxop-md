@@ -40,7 +40,7 @@
   "sequelize": "^6.23.0",
   "sharp": "^0.33.5",
   "simple-git": "^3.24.0",
-  "sqlite3": "github:FXastro/sql-node",
+  "sqlite3": "^5.1.7",
   "stream-buffers": "^3.0.2"
  }
 }
