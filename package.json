@@ -7,8 +7,7 @@
   "lib": "lib"
  },
  "scripts": {
-  "start": "node index.js",
-  "dev": "pm2 start . --attach --name fx-md",
+  "start": "pm2 start . --attach --name fx-md",
   "stop": "pm2 stop fx-md"
  },
  "author": "FXastro",
