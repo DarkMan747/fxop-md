@@ -1,71 +1,39 @@
 ## WhatsApp Bot
 
-<a href="https://fxop-web.vercel.app">
-  <img src="https://img.shields.io/badge/FX WEBSITE-000?style=for-the-badge&logo=vercel&logoColor=white" alt="FX Website"/>
-</a>
+A simple WhatsApp bot built with Baileys, deployable on multiple platforms.
 
-<a href="https://github.com/FXastro/fxop-md/fork">
-  <img src="https://img.shields.io/badge/FORK REPO-000?style=for-the-badge&logo=github&logoColor=white" alt="Fork Repository"/>
-</a>
+[Website](https://fxop-web.vercel.app)
 
-<a href="https://www.heroku.com/deploy?template=https://github.com/FXastro/fxop-md">
-  <img src="https://img.shields.io/badge/Deploy on Heroku-430098?style=for-the-badge&logo=heroku&logoColor=white" alt="Deploy on Heroku"/>
-</a>
+[Fork Repo](https://github.com/FXastro/fxop-md/fork)
 
-<a href="https://app.koyeb.com/services/deploy?type=docker&image=docker.io/fxastro/fxop-md&name=fxop-md-demo">
-  <img src="https://img.shields.io/badge/Deploy on Koyeb-0096D6?style=for-the-badge&logo=koyeb&logoColor=white" alt="Deploy on Koyeb"/>
-</a>
+[Deploy on Heroku](https://www.heroku.com/deploy?template=https://github.com/FXastro/fxop-md)
 
-<a href="https://render.com/deploy?repo=https://github.com/FXastro/fxop-md">
-  <img src="https://img.shields.io/badge/Deploy on Render-46E3B7?style=for-the-badge&logo=render&logoColor=white" alt="Deploy on Render"/>
-</a>
+[Deploy on Koyeb](https://app.koyeb.com/services/deploy?type=docker&image=docker.io/fxastro/fxop-md&name=fxop-md-demo)
 
-<a href="https://railway.app/new/template?template=https://github.com/FXastro/fxop-md">
-  <img src="https://img.shields.io/badge/Deploy on Railway-0B0B0B?style=for-the-badge&logo=railway&logoColor=white" alt="Deploy on Railway"/>
-</a>
+[Deploy on Render](https://render.com/deploy?repo=https://github.com/FXastro/fxop-md)
 
-<a href="https://github.com/FXastro/fxop-md?tab=readme-ov-file#termux-installation">
-  <img src="https://img.shields.io/badge/Termux Setup-00A980?style=for-the-badge&logo=android&logoColor=white" alt="Termux Installation"/>
-</a>
+[Deploy on Railway](https://railway.app/new/template?template=https://github.com/FXastro/fxop-md)
 
-<a href="https://github.com/FXastro/fxop-md/releases/">
-  <img src="https://img.shields.io/badge/Panel-292E49?style=for-the-badge&logo=github&logoColor=white" alt="Panel Installation"/>
-</a>
+[Panel Installation](https://github.com/FXastro/fxop-md/releases/)
 
-<a href="https://github.com/codespaces/new?repo=843557699&ref=master">
-  <img src="https://img.shields.io/badge/Codespaces-181717?style=for-the-badge&logo=github&logoColor=white" alt="Deploy on Codespaces"/>
-</a>
+[Deploy on Codespaces](https://github.com/codespaces/new?repo=843557699&ref=master)
 
-<a href="https://replit.com/~">
-  <img src="https://img.shields.io/badge/Deploy on Replit-0E152A?style=for-the-badge&logo=replit&logoColor=white" alt="Deploy on Replit"/>
-</a>
-
-#### A simple WhatsApp bot built with the Baileys library, deployable on multiple platforms.
+[Deploy on Replit](https://replit.com/~)
 
 ## Local Deployment
 
-### Steps to Run Locally
+1. Generate Session ID [here](https://fx-session.vercel.app/).
+2. Create `.env` file with required variables.
 
-1. **Generate Session ID**: Create your `SESSION_ID` [here](https://fx-session.vercel.app/).
+```bash
+SESSION_ID = "Session~sisne
+BOT_INFO = "myName;BotName;https://linktoImage/Video.jpg/media.mp4
+```
 
-2. **Configure Environment Variables**: Create a `.env` file with:
+3. Launch the bot using Node.js, Docker, etc.
 
-   ```env
-   SESSION_ID="your_generated_session_id"
-   BOT_INFO="YourName;YourBotName;https://linktoyourimage.com/image.jpg"
-   SUDO="your_whatsapp_number"
-   HANDLER="." # Command prefix
-   WELCOME_MSG="Welcome to the group, @user"
-   GOODBYE_MSG="@user left the Group."
-   TZ="Your/Timezone"
-   WORK_TYPE="private"
-   RMBG_API_KEY="your_removebg_api_key"
-   ```
-
-3. **Launch the Bot**: Use Node.js, Docker, or your preferred method.
-
----
-
-### Support
+```bash
+npm start
+```
 
 Join our [WhatsApp support channel](https://whatsapp.com/channel/0029VambPbJ2f3ERs37HvM2J) for help.
